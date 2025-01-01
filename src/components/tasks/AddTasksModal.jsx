@@ -1,11 +1,16 @@
+import { useDispatch } from "react-redux";
 import MyModal from "../ui/Modal";
 import { useForm } from "react-hook-form";
+import { addTask } from "../../redux/features/task/taskSlice";
 
 const AddTasksModal = ({ isOpen, setIsOpen }) => {
   const { register, handleSubmit, reset } = useForm();
+  const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
+    dispatch(addTask(data));
+
     onCancel();
   };
   const onCancel = () => {
@@ -35,7 +40,7 @@ const AddTasksModal = ({ isOpen, setIsOpen }) => {
             <label htmlFor="" className="mb-2">
               Date
             </label>
-            <input type="date" />
+            <input type="date" {...register("date", { required: true })} />
           </div>
           <div className="flex flex-col mb-5">
             <label htmlFor="" className="mb-2">
