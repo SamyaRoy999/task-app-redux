@@ -2,9 +2,15 @@ import MyModal from "../ui/Modal";
 import { useForm } from "react-hook-form";
 
 const AddTasksModal = ({ isOpen, setIsOpen }) => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    onCancel();
+  };
+  const onCancel = () => {
+    reset(), setIsOpen(false);
+  };
 
   return (
     <div className="flex flex-col mb-5">
@@ -55,7 +61,11 @@ const AddTasksModal = ({ isOpen, setIsOpen }) => {
             </select>
           </div>
           <div className="flex gap-3 justify-end">
-            <button type="button" className="btn btn-danger">
+            <button
+              onClick={() => onCancel()}
+              type="button"
+              className="btn btn-danger"
+            >
               cancel
             </button>
             <button type="submit" className="btn btn-primary">
