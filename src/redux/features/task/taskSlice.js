@@ -22,7 +22,7 @@ export const tasksSlice = createSlice({
       console.log("Updated state:", state.tasks);
     },
     removeTask: (state, { payload }) => {
-      state.tasks.filter((item) => item.id !== payload);
+      state.tasks = state.tasks.filter((item) => item.id !== payload);
     },
     updataStatus: (state, { payload }) => {
       const target = state.tasks.find((item) => item.id === payload.id);
@@ -32,6 +32,6 @@ export const tasksSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addTask, updataStatus } = tasksSlice.actions;
+export const { addTask, updataStatus, removeTask } = tasksSlice.actions;
 
 export default tasksSlice.reducer;
