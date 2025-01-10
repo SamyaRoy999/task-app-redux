@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   tasks: [],
+  userSpacepicTasks: [],
 };
 
 export const tasksSlice = createSlice({
@@ -28,10 +29,17 @@ export const tasksSlice = createSlice({
       const target = state.tasks.find((item) => item.id === payload.id);
       target.status = payload.status;
     },
+    userTasks: (state, { payload }) => {
+      console.log("Payload:", payload);
+      state.userSpacepicTasks = state.tasks.filter(
+        (item) => item.AssignTo === payload
+      );
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addTask, updataStatus, removeTask } = tasksSlice.actions;
+export const { addTask, updataStatus, removeTask, userTasks } =
+  tasksSlice.actions;
 
 export default tasksSlice.reducer;

@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 const Tasks = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { tasks } = useSelector((state) => state.tasks);
-  console.log("this is task", tasks);
   const pendingtask = tasks.filter((item) => item.status === "pending");
   const runningtask = tasks.filter((item) => item.status === "running");
   const donetask = tasks.filter((item) => item.status === "done");

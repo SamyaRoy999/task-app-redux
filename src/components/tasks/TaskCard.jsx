@@ -12,13 +12,13 @@ const TaskCard = ({ task }) => {
   } else {
     updatedStutas = "archive";
   }
-  console.log(task.status);
+  console.log(task);
 
   return (
     <div className="bg-secondary/10 rounded-md p-5">
       <h1>{task?.title}</h1>
       <p className="mb-3">{task?.description}</p>
-      <p className="text-sm">Assigned to - {task?.assignedTo}</p>
+      <p className="text-sm">Assigned to - {task?.AssignTo}</p>
       <div className="flex justify-between mt-3">
         <p>{task?.date}</p>
         <div className="flex gap-3">
