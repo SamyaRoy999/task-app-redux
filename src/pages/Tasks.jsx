@@ -4,6 +4,8 @@ import TaskCard from "../components/tasks/TaskCard";
 import { useState } from "react";
 import AddTasksModal from "../components/tasks/AddTasksModal";
 import { useSelector } from "react-redux";
+// just try to data fatch redux RDK
+import { useGetPostsQuery } from "../redux/features/api/baseApi";
 
 const Tasks = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +13,17 @@ const Tasks = () => {
   const pendingtask = tasks.filter((item) => item.status === "pending");
   const runningtask = tasks.filter((item) => item.status === "running");
   const donetask = tasks.filter((item) => item.status === "done");
+  // just try to data fatch redux RDK
+  const { data: post, isError, isLoading } = useGetPostsQuery();
+
+  console.log(post);
+  if (isLoading) {
+    return <h1>Loading Data ...</h1>;
+  }
+  if (isError) {
+    return console.log("error:", isError);
+  }
+  //
   return (
     <div className="h-screen grid grid-cols-12">
       <div className="col-span-9 px-10 pt-10">

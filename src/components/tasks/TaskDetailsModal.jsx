@@ -6,7 +6,7 @@ const TaskDetailsModal = ({ isOpen, setIsOpen, id }) => {
   const task = tasks.find((item) => item.id === id);
   return (
     <MyModal isOpen={isOpen} setIsOpen={setIsOpen}>
-      <h3>{task.description}</h3>
+      <h3>{task?.description}</h3>
     </MyModal>
   );
 };
