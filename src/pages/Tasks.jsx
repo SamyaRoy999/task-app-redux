@@ -15,7 +15,6 @@ const Tasks = () => {
   const donetask = tasks.filter((item) => item.status === "done");
   // just try to data fatch redux RDK
   const { data: post, isError, isLoading } = useGetPostsQuery();
-
   console.log(post);
   if (isLoading) {
     return <h1>Loading Data ...</h1>;
